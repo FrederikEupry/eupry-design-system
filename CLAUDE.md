@@ -8,11 +8,12 @@ Quick reference for AI agents. For full details, see `DESIGN.md`. For structured
 eupry-design-system/
 ├── CLAUDE.md          # This file (quick reference)
 ├── DESIGN.md          # Full documentation
-├── icon-index.json    # Icon lookup (categories, aliases) - USE THIS FIRST
 ├── tokens.json        # Design tokens as structured data
-├── icons/             # Individual SVG files (208 icons)
+├── icons/             # eupry-squid logo (brand mark only — use Lucide for UI icons)
 └── fonts/             # Instrument Sans (.woff2)
 ```
+
+**Icons:** use [Lucide](https://lucide.dev) via CDN (see Icons section). `eupry-squid` is the only custom icon.
 
 ## Logo
 
@@ -49,29 +50,28 @@ eupry-design-system/
 | Default | `#070A26` | `#070A26` | Light backgrounds |
 | Inverted | `#FFFFFF` | `#FFFFFF` | Dark backgrounds |
 
-## Icon Lookup
+## Icons
 
-**Always check `icon-index.json` first** - it has categories and aliases.
+**Use [Lucide](https://lucide.dev) for all UI icons.** The `eupry-squid` logo above is the only custom brand icon — everything else comes from Lucide. Browse/confirm names at https://lucide.dev/icons (kebab-case, e.g. `arrow-right`, `thermometer`, `bell-ring`, `triangle-alert`). Never invent icon names; pick the closest real Lucide icon.
 
-```javascript
-// Find icon by category
-categories.navigation  // arrows, chevrons, home, map-pin
-categories.actions     // checkmark, cross, plus, minus, edit, search
-categories.status      // bell, alarm, info, shield, deviation
-categories.communication // chat, email, phone, headset
-categories.files       // document, folder, archive, book
-categories.temperature // therometer, humidity, snowflake, fridge
+**Delivery: CDN.**
 
-// Find icon by alias
-aliases.menu       → "burgermenu"
-aliases.close      → "cross"
-aliases.check      → "checkmark"
-aliases.delete     → "trash"
-aliases.settings   → "settings"
-aliases.user       → "user1"
+```html
+<!-- once, before </body> -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 
-// Get SVG: read ./icons/{icon-name}.svg
+<!-- anywhere -->
+<i data-lucide="thermometer"></i>
 ```
+
+Single SVG (no script): `https://unpkg.com/lucide-static@latest/icons/{name}.svg`
+
+```css
+[data-lucide] { width: 20px; height: 20px; stroke-width: 2; color: currentColor; }
+```
+
+**Sizing:** 16px (buttons), 20px (default), 24px (nav), 32px (feature).
 
 ## Colors
 

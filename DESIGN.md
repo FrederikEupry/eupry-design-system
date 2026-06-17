@@ -1,6 +1,6 @@
 # Eupry Design System
 
-**Version**: 1.0 | **Last Updated**: 2026-01-09
+**Version**: 2.0 | **Last Updated**: 2026-06-17
 
 This document serves as the design backbone for creating Eupry-branded tools and applications.
 
@@ -37,36 +37,36 @@ This document serves as the design backbone for creating Eupry-branded tools and
 
 ### Eupry Black Scale
 
-```
-DEFAULT   #070A26  ████████  Primary brand black
-900       #20233B  ████████
-800       #393B50  ████████
-700       #515466  ████████
-600       #6A6C7C  ████████
-500       #838491  ████████
-400       #9C9DA7  ████████
-300       #B5B5BD  ████████
-200       #CDCED4  ████████
-100       #E6E6E9  ████████
-50        #F3F3F4  ████████  Subtle backgrounds
-```
+| Step | Hex | Usage |
+|------|-----|-------|
+| DEFAULT | `#070A26` | Primary brand black |
+| 900 | `#20233B` | |
+| 800 | `#393B50` | |
+| 700 | `#515466` | |
+| 600 | `#6A6C7C` | |
+| 500 | `#838491` | |
+| 400 | `#9C9DA7` | Placeholder text |
+| 300 | `#B5B5BD` | |
+| 200 | `#CDCED4` | Input borders |
+| 100 | `#E6E6E9` | |
+| 50 | `#F3F3F4` | Subtle backgrounds |
 
 ### Brain Freeze Blue Scale (Primary Accent)
 
-```
-Dark      #20B3D2  ████████  Darker variant for contrast
-DEFAULT   #26DDFD  ████████  Primary cyan accent
-900       #4ADFFA  ████████
-800       #5BE3FB  ████████
-700       #6EE6FC  ████████
-600       #83EAFC  ████████
-500       #92EEFE  ████████
-400       #ABFXFD  ████████
-300       #C0F5FD  ████████
-200       #D5F8FE  ████████  Light background tint
-100       #EAFCFF  ████████
-50        #F4FDFF  ████████  Subtle highlight
-```
+| Step | Hex | Usage |
+|------|-----|-------|
+| Dark | `#20B3D2` | Darker variant for contrast |
+| DEFAULT | `#26DDFD` | Primary cyan accent |
+| 900 | `#4ADFFA` | |
+| 800 | `#5BE3FB` | |
+| 700 | `#6EE6FC` | |
+| 600 | `#83EAFC` | |
+| 500 | `#92EEFE` | |
+| 400 | `#ABF0FD` | |
+| 300 | `#C0F5FD` | |
+| 200 | `#D5F8FE` | Light background tint |
+| 100 | `#EAFCFF` | |
+| 50 | `#F4FDFF` | Subtle highlight |
 
 ### Secondary Accent Colors
 
@@ -75,21 +75,21 @@ DEFAULT   #26DDFD  ████████  Primary cyan accent
 |---------|-----|-------|
 | Dark | `#A6CEA6` | Text on light, darker UI |
 | DEFAULT | `#CEFFC6` | Success states, highlights |
-| Light (200) | `#D5F8FE` | Background tints |
+| Light | `#E5F3E5` | Background tints |
 
 #### Hot Pink
 | Variant | Hex | Usage |
 |---------|-----|-------|
 | Dark | `#C288C9` | Text on light, darker UI |
 | DEFAULT | `#F1A7F2` | Accent, special highlights |
-| Light (200) | `#FCEDFB` | Background tints |
+| Light | `#FCEDFB` | Background tints |
 
 #### Capri Sun (Orange)
 | Variant | Hex | Usage |
 |---------|-----|-------|
 | Dark | `#CD4C08` | Text on light, darker UI |
 | DEFAULT | `#FF5C00` | CTAs, action items, warnings |
-| Light (200) | `#FEDEDE` | Background tints |
+| Light | `#FEDEDE` | Background tints |
 
 ### Status Colors
 
@@ -182,19 +182,19 @@ font-family: 'Instrument Sans', sans-serif;
 ```css
 /* H1 - Hero/Page Title */
 h1 {
-  font-size: 2rem;        /* Mobile: 32px */
+  font-size: 3rem;        /* Mobile: 48px (4xl) */
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.025em;
   color: #070A26;
 }
 @media (min-width: 768px) {
-  h1 { font-size: 4rem; } /* Desktop: 64px */
+  h1 { font-size: 4rem; } /* Desktop: 64px (6xl) */
 }
 
 /* H2 - Section Title */
 h2 {
-  font-size: 1.75rem;     /* 28px */
+  font-size: 1.75rem;     /* 28px (2xl) */
   font-weight: 500;
   line-height: 1;
   color: #070A26;
@@ -202,7 +202,7 @@ h2 {
 
 /* H3 - Subsection */
 h3 {
-  font-size: 1.5rem;      /* 24px */
+  font-size: 2rem;        /* 32px (3xl) */
   font-weight: 500;
   color: #070A26;
 }
@@ -615,21 +615,23 @@ input[type="radio"] {
 
 ## 9. Icons
 
-### Icon Location
+### Icon Library
 
-All 209 Eupry icons are available in `./all-icons.json` - a structured JSON file for easy programmatic access. The JSON structure is:
+Use [**Lucide**](https://lucide.dev) for all UI icons. The only custom Eupry icon is the `eupry-squid` logo/brand mark (see Logo section) — everything else comes from Lucide. Browse and confirm exact names at https://lucide.dev/icons. Names are kebab-case (e.g. `arrow-right`, `thermometer`, `bell-ring`, `triangle-alert`). Never invent icon names; if one doesn't exist, pick the closest real Lucide icon.
 
-```json
-{
-  "version": "1.0",
-  "description": "Eupry Design System Icons",
-  "totalIcons": 209,
-  "icons": {
-    "IconName": "<svg>...</svg>",
-    ...
-  }
-}
+**Delivery: CDN.** Add the script once, then use `data-lucide` attributes:
+
+```html
+<!-- once, before </body> -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+<!-- anywhere -->
+<i data-lucide="thermometer"></i>
+<i data-lucide="bell-ring"></i>
 ```
+
+Or fetch a single SVG directly (no script): `https://unpkg.com/lucide-static@latest/icons/{name}.svg`
 
 ### Icon Sizing
 
@@ -648,45 +650,35 @@ All 209 Eupry icons are available in `./all-icons.json` - a structured JSON file
 - Interactive: Changes with hover state
 - Accent: Use brand colors for emphasis
 
-### Common Icons (from Eupry icon set)
+### Common Icons (Lucide names)
 
-**Navigation**: ArrowRight, ArrowLeft, ArrowUp, ArrowDown, ChevronUp, ChevronDown, ChevronLeft, ChevronRight
+**Navigation**: `arrow-right`, `arrow-left`, `arrow-up`, `arrow-down`, `chevron-up`, `chevron-down`, `chevron-left`, `chevron-right`, `house`, `map-pin`
 
-**Actions**: Checkmark, Cross, Download, Edit, Search, Plus, Minus
+**Actions**: `check`, `x`, `download`, `pencil`, `search`, `plus`, `minus`, `trash-2`, `settings`
 
-**Status**: CheckmarkCircle, CrossCircle, BellNotification, Info
+**Status**: `circle-check`, `circle-x`, `bell`, `info`, `triangle-alert`, `shield-check`
 
-**UI**: Burgermenu, BurgermenuOpen, ExternalLink
+**Temperature/Monitoring**: `thermometer`, `droplet`, `snowflake`, `wifi`, `battery`, `cloud`
+
+**UI**: `menu`, `ellipsis`, `external-link`
 
 ### Using Icons
 
-Access icons programmatically from `all-icons.json`:
-
-```javascript
-// Load icons from JSON
-const icons = require('./all-icons.json').icons;
-
-// Get a specific icon
-const arrowRight = icons['ArrowRight'];
-
-// Use in HTML
-document.querySelector('.icon').innerHTML = arrowRight;
-```
-
-Or paste the SVG code directly into your HTML:
-
 ```html
-<!-- Paste SVG code inline -->
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- paths from all-icons.json -->
-</svg>
+<!-- once, before </body> -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+<!-- anywhere -->
+<i data-lucide="arrow-right"></i>
 ```
 
 ```css
-/* Icon styling */
-.icon {
-  width: 1.5rem;
-  height: 1.5rem;
+/* Icon styling — Lucide is stroke-based and inherits currentColor */
+[data-lucide], .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2;
   color: currentColor;
 }
 ```
@@ -901,9 +893,9 @@ Located at: `./fonts/` (woff2 format only)
 - InstrumentSans-SemiBold.woff2
 - InstrumentSans-Bold.woff2
 
-### Icon Files
+### Icons
 
-All 209 icons in: `./all-icons.json`
+Use [Lucide](https://lucide.dev) via CDN (see Section 9). The `eupry-squid` brand mark is the only custom icon.
 
 ---
 
@@ -912,7 +904,7 @@ All 209 icons in: `./all-icons.json`
 When creating external Eupry-branded tools:
 
 1. **Include the font** - Copy font files from `./fonts/` folder
-2. **Include icons** - Load icons from `./all-icons.json`
+2. **Include icons** - Use Lucide via CDN (see Section 9)
 3. **Copy CSS variables** - Use the variables from Section 11
 4. **Match the color scheme** - Primary black + Brain Freeze accent
 5. **Use rounded buttons** - `border-radius: 9999px` for pills
@@ -922,7 +914,7 @@ When creating external Eupry-branded tools:
 ### Minimal CSS Starter
 
 ```css
-@import url('./fonts/fonts.css'); /* Or inline @font-face rules */
+/* Add the @font-face rules from Section 2 (Typography) here, or inline them */
 
 :root {
   --eupry-black: #070A26;
@@ -983,7 +975,6 @@ a {
 ```
 DESIGN SYSTEM/
 ├── DESIGN.md          # This file
-├── all-icons.json     # All 209 icons (structured JSON format)
 └── fonts/             # Instrument Sans font files (.woff2 only)
     ├── InstrumentSans-Regular.woff2
     ├── InstrumentSans-Medium.woff2
